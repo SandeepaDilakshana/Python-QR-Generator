@@ -14,9 +14,11 @@ A simple and user-friendly QR Code Generator built with Python and Tkinter. This
 # Screenshots
 
 - Interface
+  
 ![Screenshot 2024-12-08 161845](https://github.com/user-attachments/assets/2f2a78db-c4c0-4da9-a28f-9dfbab7940e1)
 
 - Sample Output
+  
 ![Screenshot 2024-12-08 161935](https://github.com/user-attachments/assets/6e8bbae3-2cb6-4b6f-a5d1-8486752f4442)
 
 ---
