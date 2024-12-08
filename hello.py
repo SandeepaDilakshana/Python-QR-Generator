@@ -1,6 +1,7 @@
 import qrcode
-from tkinter import Tk, Label, Entry, Button, StringVar, messagebox, filedialog
-from tkinter import ttk
+from tkinter import Tk, Label, Entry, Button, StringVar, messagebox, ttk
+from PIL import Image, ImageTk
+import os
 
 
 # Function to generate and save QR code
@@ -22,6 +23,10 @@ def generate_qr():
         # Save the QR code
         save_path = f"{filename}.png"
         img.save(save_path)
+
+        # Update the QR code preview
+        display_qr(img)
+
         messagebox.showinfo("Success", f"QR Code saved as {save_path}")
     except Exception as e:
         messagebox.showerror("Error", f"An error occurred: {str(e)}")
@@ -36,9 +41,16 @@ def clear_fields():
 # Create the main window
 root = Tk()
 root.title("QR Code Generator")
-root.geometry("400x250")
+root.geometry("500x500")
 root.resizable(False, False)
 root.configure(bg="#f0f0f0")
+
+# Function to display the QR code in the Tkinter window
+def display_qr(img):
+    # Convert the PIL image to a format Tkinter can display
+    img_tk = ImageTk.PhotoImage(img)
+    qr_preview_label.config(image=img_tk)
+    qr_preview_label.image = img_tk
 
 # Create a style for ttk widgets
 style = ttk.Style()
@@ -71,6 +83,10 @@ generate_button.grid(row=0, column=0, padx=5)
 
 clear_button = ttk.Button(button_frame, text="Clear", command=clear_fields)
 clear_button.grid(row=0, column=1, padx=5)
+
+# QR Code Preview
+qr_preview_label = Label(root, bg="#f0f0f0")
+qr_preview_label.pack(pady=10)
 
 # Footer Label
 footer = Label(root, text="QR Code Generator © 2024", bg="#f0f0f0", fg="gray", font=("Helvetica", 10))
