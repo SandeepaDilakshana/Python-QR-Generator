@@ -1,4 +1,4 @@
-import qrgenerator
+import qrcode
 from tkinter import Tk, Label, Entry, Button, StringVar, messagebox, filedialog
 from tkinter import ttk
 
